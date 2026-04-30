@@ -48,75 +48,58 @@ def generate_insight(data, analysis):
 
     # 🔥 PROMPT
     prompt = f"""
-You are an AI Financial Coach for users in Indonesia.
+You are an AI Financial Coach for users.
 
-Kamu adalah AI Financial Coach untuk pengguna di Indonesia.
+Analyze the following financial data:
 
-Analyze the following financial data / Analisis data berikut:
+Income: {format_rupiah(income)}
+Expenses:
+- Food: {format_rupiah(expenses['food'])}
+- Transport: {format_rupiah(expenses['transport'])}
+- Entertainment: {format_rupiah(expenses['entertainment'])}
+Total Expense: {format_rupiah(total_expense)}
+Savings: {format_rupiah(savings)}
 
-Income / Pendapatan: {format_rupiah(income)}
-
-Expenses / Pengeluaran:
-- Food / Makanan: {format_rupiah(expenses['food'])}
-- Transport / Transportasi: {format_rupiah(expenses['transport'])}
-- Entertainment / Hiburan: {format_rupiah(expenses['entertainment'])}
-
-Total Expense / Total Pengeluaran: {format_rupiah(total_expense)}
-Savings / Tabungan: {format_rupiah(savings)}
-
-Additional Data (MUST BE USED / WAJIB DIGUNAKAN):
+Additional Data (MUST BE USED):
 - Saving rate: {saving_rate}%
-- Simulation 10% / Simulasi 10%: {format_rupiah(saving_10)}
-- Simulation 20% / Simulasi 20%: {format_rupiah(saving_20)}
+- Simulation 10%: {format_rupiah(saving_10)}
+- Simulation 20%: {format_rupiah(saving_20)}
 
-Your Tasks / Tugas kamu:
+Your tasks:
 1. Evaluate financial condition (Healthy / Moderate / Needs Improvement)
-   Evaluasi kondisi keuangan (Sehat / Cukup / Perlu Perbaikan)
-
 2. Identify main problems (specific, not generic)
-   Identifikasi masalah utama (spesifik, jangan umum)
-
 3. Explain saving rate (DO NOT recalculate)
-   Jelaskan saving rate (JANGAN menghitung ulang)
+4. Provide 3–5 CONCRETE & ACTIONABLE recommendations
+5. Explain simulation impact (DO NOT recalculate)
 
-4. Provide 3–5 CONCRETE and ACTIONABLE recommendations
-   Berikan 3–5 rekomendasi KONKRET
-
-5. Explain simulation results (DO NOT recalculate)
-   Jelaskan simulasi (JANGAN menghitung ulang)
-
-Rules / Aturan:
-- DO NOT recalculate any numbers
-- DILARANG menghitung ulang angka
-- Use only the provided data
-- Gunakan data yang diberikan saja
-- Use Bahasa Indonesia as the main output language
-- Gunakan Bahasa Indonesia sebagai output utama
-- Use bullet points (clear and structured)
-- Gunakan bullet point
+Rules:
+- DO NOT recalculate numbers
+- Use only provided data
+- Use English
+- Use bullet points
 - Avoid generic advice
-- Hindari saran umum
+- Be specific (e.g., percentages, not vague suggestions)
 
-STRICT FORMAT:
+REQUIRED FORMAT:
 
-1. Evaluasi Kondisi Keuangan:
+1. Financial Condition:
 - ...
 
-2. Masalah Utama:
+2. Main Issues:
 - ...
 - ...
 
 3. Saving Rate:
 - ...
 
-4. Rekomendasi:
+4. Recommendations:
 - ...
 - ...
 - ...
 
-5. Simulasi:
-- Jika pengeluaran turun 10% → ...
-- Jika pengeluaran turun 20% → ...
+5. Simulation:
+- If expenses decrease by 10% → ...
+- If expenses decrease by 20% → ...
 """
 
     # 🔥 CALL AI + ERROR HANDLING

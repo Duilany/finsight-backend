@@ -23,7 +23,7 @@ def generate_insight(data, analysis):
     # 🔥 VALIDASI
     if income == 0:
         return {
-            "insight": "Pendapatan tidak boleh 0.",
+            "insight": "Income cannot be zero.",
             "profile": "Unknown"
         }
 
@@ -109,7 +109,7 @@ REQUIRED FORMAT:
             messages=[
                 {
                     "role": "system",
-                    "content": "Kamu adalah financial advisor profesional yang fokus pada insight praktis, akurat, dan actionable."
+                    "content": "You are a professional financial advisor focused on practical, accurate, and actionable insights."
                 },
                 {
                     "role": "user",
@@ -123,7 +123,7 @@ REQUIRED FORMAT:
 
     except Exception as e:
         print("ERROR AI:", str(e))
-        insight_text = "Terjadi kesalahan saat menghasilkan insight. Silakan coba lagi."
+        insight_text = "An error occurred while generating the insight. Please try again."
 
     return {
         "insight": insight_text,
